@@ -16,8 +16,6 @@ def makeoptionbtns():
         text.insert("end", "\n")
         text.configure(state="disabled")
 
-        #en kommentar, test
-
 
 btn1=tkinter.Button(root, text="button1", fg="black", bg ="#7D12FF", height=5, width= 20)
 btn1.grid(row=10,column=0)
