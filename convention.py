@@ -18,6 +18,8 @@ root = tk.Tk()
 root.title("Convention")
 root.geometry("800x600")
 
+root.resizable(False, False)
+
 style = ttk.Style(root)
 style.configure("Option.TButton", foreground="black", background="#7D12FF", width=15)
 
