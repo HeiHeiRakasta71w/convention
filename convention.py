@@ -1,44 +1,42 @@
-import tkinter
+import tkinter as tk
 from tkinter import ttk
 
-root = tkinter.Tk()
-root.title("Convention")
-root.geometry("1000x500")
-
 def opensettings():
-    settingswin = tkinter.Toplevel(root)
+    settingswin = tk.Toplevel(root)
     settingswin.geometry("750x250")
-    settingswin.title("New Child Window")
+    settingswin.title("Settings")
 
 def makeoptionbtns():
-    text = tkinter.Text(root)
-    text.grid(row=2, column=2)
+    options_frame = ttk.Frame(root)
+    options_frame.grid(row=2, column=2, padx=20, pady=20)
+    
     for i in range(4):
-        button = tkinter.Button(text, text="pizza")
-        text.window_create("end", window=button)
-        text.insert("end", "\n")
-        text.configure(state="disabled")
-    text.update()
+        button = ttk.Button(options_frame, text="Pizza", style="Option.TButton")
+        button.grid(row=i, column=0, pady=5, sticky="w")
 
-btn1 = tkinter.Button(root, text="button1", fg="black", bg="#7D12FF", height=5, width=20)
-btn1.grid(row=10, column=0)
+root = tk.Tk()
+root.title("Convention")
+root.geometry("800x600")
 
-btnExit = tkinter.Button(root, text="Exit", fg="black", bg="red", height=5, width=20)
-btnExit.grid(row=0, column=0)
+style = ttk.Style(root)
+style.configure("Option.TButton", foreground="black", background="#7D12FF", width=15)
 
-btnSave = tkinter.Button(root, text="Save game", fg="black", bg="green", height=5, width=20)
-btnSave.grid(row=0, column=1)
+btnExit = ttk.Button(root, text="Exit", style="Option.TButton", command=root.quit)
+btnExit.grid(row=0, column=0, padx=20, pady=20, sticky="w")
 
-settingslabel = tkinter.Label(root, text="Settings:")
-settingslabel.grid(row=1, column=0)
+btnSave = ttk.Button(root, text="Save Game", style="Option.TButton")
+btnSave.grid(row=0, column=1, padx=20, pady=20, sticky="w")
 
-mainText = tkinter.Text(root, width=210, height=40, fg="black", bg="#bcbcbc", font=('Sans Serif', 11, 'italic bold'))
-mainText.grid(row=1, column=2)
+settingslabel = tk.Label(root, text="Settings:", font=("Arial", 12, "bold"))
+settingslabel.grid(row=1, column=0, padx=20, pady=10, sticky="w")
+
+mainText = tk.Text(root, width=60, height=20, fg="black", bg="#bcbcbc", font=('Sans Serif', 11, 'italic bold'))
+mainText.grid(row=1, column=1, padx=20, pady=10, rowspan=4)
 mainText.insert("insert", "Er din favorittmat pizza, pannekake eller eple?")
 mainText.config(state="disabled")
 
-sb = tkinter.Scrollbar(root, command=mainText.yview)
-sb.grid(row=1, column=3, sticky='ns')
+sb = tk.Scrollbar(root, command=mainText.yview)
+sb.grid(row=1, column=2, pady=10, sticky='ns')
 mainText.configure(yscrollcommand=sb.set)
 
 makeoptionbtns()
