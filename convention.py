@@ -1,10 +1,50 @@
 import tkinter as tk
 from tkinter import ttk
 
+class MainMenu:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Main Menu")
+        self.root.geometry("300x200")
+        self.root.resizable(False, False)
+
+        self.style = ttk.Style(self.root)
+        self.style.configure("Option.TButton", foreground="black", background="#7D12FF", width=20)
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.btn_new_game = ttk.Button(self.root, text="Start Spill", style="Option.TButton", command=self.start_new_game)
+        self.btn_new_game.pack(pady=10)
+
+        self.btn_load_game = ttk.Button(self.root, text="Åpne Lagret Spill", style="Option.TButton", command=self.load_saved_game)
+        self.btn_load_game.pack(pady=10)
+
+        self.btn_credits = ttk.Button(self.root, text="Credits", style="Option.TButton", command=self.show_credits)
+        self.btn_credits.pack(pady=10)
+
+    def start_new_game(self):
+        self.root.destroy()  # Lukk hovedmeny-vinduet
+        game_window = tk.Tk()  # Opprett et nytt spillvindu
+        app = TextBasedGameApp(game_window)
+        game_window.mainloop()
+
+    def load_saved_game(self):
+        self.root.destroy()  # Lukk hovedmeny-vinduet
+        saved_game_window = tk.Tk()  # Opprett et nytt lagret spill-vindu
+        app = LoadSavedGameApp(saved_game_window)
+        saved_game_window.mainloop()
+
+    def show_credits(self):
+        self.root.destroy()  # Lukk hovedmeny-vinduet
+        credits_window = tk.Tk()  # Opprett et nytt vindu for kreditter
+        app = CreditsApp(credits_window)
+        credits_window.mainloop()
+
 class TextBasedGameApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Convention")
+        self.root.title("Text-Based Game")
         self.root.geometry("800x600")
         self.root.resizable(False, False)
 
@@ -61,9 +101,15 @@ class TextBasedGameApp:
             button = ttk.Button(options_frame, text=option, style="Option.TButton")
             button.grid(row=i, column=0, pady=5, sticky="w")
 
+class LoadSavedGameApp:
+    pass
+
+class CreditsApp:
+    pass
+
 def main():
     root = tk.Tk()
-    app = TextBasedGameApp(root)
+    main_menu = MainMenu(root)
     root.mainloop()
 
 if __name__ == "__main__":
