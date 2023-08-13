@@ -2,15 +2,18 @@ import tkinter as tk
 from tkinter import ttk
 
 def opensettings():
-    # Deaktiver hovedvinduet mens settings-vinduet er åpent
-    root.withdraw()  # Skjul hovedvinduet
+    root.withdraw()
+    
     settingswin = tk.Toplevel(root)
     settingswin.geometry("300x200")
     settingswin.title("Settings")
     
+    # Hindre endring av størrelse for settings-vinduet
+    settingswin.resizable(False, False)
+    
     def close_settings():
         settingswin.destroy()
-        root.deiconify()  # Gjenopprett hovedvinduet når settings-vinduet lukkes
+        root.deiconify()
     
     settingswin.protocol("WM_DELETE_WINDOW", close_settings)
     
