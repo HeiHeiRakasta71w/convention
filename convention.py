@@ -4,16 +4,19 @@ from tkinter import ttk
 class TextBasedGameApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Text-Based Game")
+        self.root.title("Convention")
         self.root.geometry("800x600")
         self.root.resizable(False, False)
 
         self.style = ttk.Style(self.root)
         self.style.configure("Option.TButton", foreground="black", background="#7D12FF", width=15)
 
+        self.options = ["Pizza", "Pannekake", "Eple"]  # Liste med forskjellige alternativer
+
         self.create_widgets()
 
     def create_widgets(self):
+        # Opprett knapper og andre GUI-elementer
         self.btn_exit = ttk.Button(self.root, text="Exit", style="Option.TButton", command=self.root.quit)
         self.btn_exit.grid(row=0, column=0, padx=20, pady=20, sticky="w")
 
@@ -52,9 +55,10 @@ class TextBasedGameApp:
     def make_option_btns(self):
         options_frame = ttk.Frame(self.root)
         options_frame.grid(row=2, column=2, padx=20, pady=20)
-
-        for i in range(4):
-            button = ttk.Button(options_frame, text="Pizza", style="Option.TButton")
+        
+        # Opprett knapper for hvert alternativ i self.options
+        for i, option in enumerate(self.options):
+            button = ttk.Button(options_frame, text=option, style="Option.TButton")
             button.grid(row=i, column=0, pady=5, sticky="w")
 
 def main():
