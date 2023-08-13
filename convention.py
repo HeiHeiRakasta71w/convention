@@ -9,12 +9,12 @@ def opensettings():
     settingswin.geometry("750x250")
     settingswin.title("New Child Window")
 
-def makeoptionbtns():
-    for i in range(4):
-        button = tkinter.Button(text, text="pizza")
-        text.window_create("end", window=button)
-        text.insert("end", "\n")
-        text.configure(state="disabled")
+def makeoptionbtns(quantity):
+    for i in range(quantity):
+        button = tkinter.Button(optionswin, text="pizza")
+        optionswin.window_create("end", window=button)
+        optionswin.insert("end", "\n")
+        optionswin.configure(state="disabled")
 
 
 btn1=tkinter.Button(root, text="button1", fg="black", bg ="#7D12FF", height=5, width= 20)
@@ -31,15 +31,27 @@ settingslabel.grid(row=1,column=0)
 
 mainText=tkinter.Text(root,width=210, height=40 , fg="black" , bg="#bcbcbc", font= ('Sans Serif', 11, 'italic bold'))
 mainText.grid(row=1, column=2)
-mainText.insert("insert", "Er din favorittmat pizza, pannekake eller eple?")
+mainText.insert("insert", "You come to a place with two corridors to the left and to the right of you.")
 mainText.config(state="disabled")
 
-text = tkinter.Text(root)
-text.grid(row = 2, column = 2)
-sb = tkinter.Scrollbar(root, command=text.yview)
-sb.grid(row = 3, column = 1)
-text.configure(yscrollcommand=sb.set)
 
-makeoptionbtns()
+mainText.insert("insert", "Taking it out of its place makes a spreadsheet lie in your hands")
+
+queestions = {"First question: Which following age group are you apart of?", "Second question: What is your gender-identity?",
+              "third question: What is your sexual orientation?", "Fourth question: "}
+
+for i in range(10):
+    mainText.insert()
+    mainText.insert("insert", "You check the corresponding checkbox")
+
+mainText.insert("insert", "Taking it out of its place makes a spreadsheet lie in your hands")
+
+optionswin = tkinter.Text(root)
+optionswin.grid(row = 2, column = 2)
+sb = tkinter.Scrollbar(root, command=optionswin.yview)
+sb.grid(row = 3, column = 1)
+optionswin.configure(yscrollcommand=sb.set)
+
+makeoptionbtns(10)
 
 root.mainloop()
