@@ -14,10 +14,10 @@ class MainMenu:
         self.create_widgets()
 
     def create_widgets(self):
-        self.btn_new_game = ttk.Button(self.root, text="Start Spill", style="Option.TButton", command=self.start_new_game)
+        self.btn_new_game = ttk.Button(self.root, text="Start New Game", style="Option.TButton", command=self.start_new_game)
         self.btn_new_game.pack(pady=10)
 
-        self.btn_load_game = ttk.Button(self.root, text="Åpne Lagret Spill", style="Option.TButton", command=self.load_saved_game)
+        self.btn_load_game = ttk.Button(self.root, text="Load Game", style="Option.TButton", command=self.load_saved_game)
         self.btn_load_game.pack(pady=10)
 
         self.btn_credits = ttk.Button(self.root, text="Credits", style="Option.TButton", command=self.show_credits)
