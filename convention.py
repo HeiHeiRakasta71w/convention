@@ -93,7 +93,7 @@ class TextBasedGameApp:
         self.main_text = tk.Text(self.root, width=60, height=20, fg="black", bg="#bcbcbc", font=('Sans Serif', 11, 'italic bold'))
         self.main_text.grid(row=1, column=1, padx=20, pady=10, rowspan=3)
         self.change_character_format('NPC')  # Set formatting for NPC speech
-        self.print_text_with_typewriter("Er din favorittmat pizza, pannekake eller eple?")
+        self.print_text_with_typewriter("It's late and you have to set your alarm on your phone to catch the ride to the convention you are going to.")
         self.main_text.config(state="disabled")
 
         self.choice_entry = tk.Entry(self.root, width=60, fg="black", bg="white", font=('Sans Serif', 11, 'italic bold'))
